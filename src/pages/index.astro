@@ -1,11 +1,95 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import { FrontPage } from "@components/FrontPage";
+import Navigation from "@components/Navigation.astro";
+const name = "Tomy Bautista";
 ---
-
-<Layout>
-	<Welcome />
+<Layout title={ name }>
+  <Navigation />
+	<FrontPage client:load />
 </Layout>
+<!-- ---
+---
+<html lang="en">
+  <head>
+    <title>Mouse Scroll Animation</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        overflow-x: hidden;
+      }
+
+      section {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+
+      .scroll-element {
+        font-size: 2rem;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.6s ease;
+      }
+
+      .visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Estilos para diferenciar las secciones */
+      .section-1 {
+        background-color: #ffcccc;
+      }
+      .section-2 {
+        background-color: #ccffcc;
+      }
+      .section-3 {
+        background-color: #ccccff;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Contenido -->
+    <section class="section-1">
+      <div class="scroll-element">🌟 Bienvenido a la sección 1</div>
+    </section>
+    <section class="section-2">
+      <div class="scroll-element">✨ Esta es la sección 2</div>
+    </section>
+    <section class="section-3">
+      <div class="scroll-element">🚀 Sección 3, ¡fin del scroll!</div>
+    </section>
+
+    <!-- Script para las animaciones -->
+    <script>
+      const elements = document.querySelectorAll(".scroll-element");
+
+      const handleScroll = () => {
+        elements.forEach((el) => {
+          	const rect = el.getBoundingClientRect();
+		  	console.log(rect);
+		  	console.log(window.innerHeight)
+          	const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+			console.log( isVisible )
+          	if ( isVisible ) {
+	            el.classList.add("visible");
+    	    } else {
+            	el.classList.remove("visible");
+          	}
+        });
+      };
+
+      // Llamar al manejar scroll
+      window.addEventListener("scroll", handleScroll);
+
+      // Ejecutar inicialmente por si el usuario ya está en el medio de la página
+      handleScroll();
+    </script>
+  </body>
+</html> -->

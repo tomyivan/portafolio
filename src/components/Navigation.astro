@@ -1,0 +1,25 @@
+---
+import { Icon } from 'astro-icon/components'
+---
+
+<div class="fixed flex flex-col justify-center text-gray-100 h-screen ps-10">
+    <div class="flex flex-col gap-4 items-center  py-4 bg-gray-800 rounded-2xl px-1 text-gray-100">  
+        <div class="icon">
+            <Icon name="Home" size={20}  />
+        </div>
+        <div class="icon">
+            <Icon name="About" size={20}  />
+        </div>
+        <div class="icon">
+            <Icon name="Skill" size={20}  />
+        </div>
+        <div class="icon">
+            <Icon name="Message" size={20}  />
+        </div>
+    </div>
+</div>
+<style>
+    .icon{
+        @apply p-2 transition-all border-b-2 hover:text-cyan-700 hover:border-cyan-700 hover:-translate-y-2 cursor-pointer
+    }
+</style>
