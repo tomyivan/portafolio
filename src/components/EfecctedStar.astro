@@ -1,0 +1,79 @@
+<style>
+:global(.star) {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, white 70%, rgba(255, 255, 255, 0.4) 100%);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  opacity: 0.8;
+  animation:
+    twinkle var(--twinkle-duration) infinite ease-in-out,
+    drift var(--drift-duration) linear infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes drift {
+  0% {
+    transform: translate(var(--x-start), var(--y-start));
+  }
+  100% {
+    transform: translate(var(--x-end), var(--y-end));
+  }
+}
+
+.space {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10;
+  background: linear-gradient(black, darkblue);
+}
+
+</style>
+
+<section class="space" id="layout"></section>
+
+<script>
+const layout = document.getElementById('layout');
+const countStar = 400;
+
+function random(min : number, max : number) {
+  return Math.random() * (max - min) + min;
+}
+
+for (let i = 0; i < countStar; i++) {
+  const star = document.createElement('div');
+  star.className = 'star';
+
+  const size = random(1, 3);
+  star.style.width = `${size}px`;
+  star.style.height = `${size}px`;
+
+  // Posición inicial
+  const startX = random(0, window.innerWidth);
+  const startY = random(0, window.innerHeight);
+  star.style.left = `${startX}px`;
+  star.style.top = `${startY}px`;
+
+  // Destino de movimiento
+  star.style.setProperty('--x-start', `0px`);
+  star.style.setProperty('--y-start', `0px`);
+  star.style.setProperty('--x-end', `${random(-200, 200)}px`);
+  star.style.setProperty('--y-end', `${random(-200, 200)}px`);
+
+  // Diferentes velocidades
+  star.style.setProperty('--twinkle-duration', `${random(1, 3)}s`);
+  star.style.setProperty('--drift-duration', `${random(8, 20)}s`);
+
+  layout?.appendChild(star);
+}
+</script>
