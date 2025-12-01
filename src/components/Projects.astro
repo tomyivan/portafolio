@@ -1,0 +1,228 @@
+---
+const proyects = [
+  {
+    title: "Sistema de Activos Fijos con generacion de QR - 2024",
+    label: "Activo Fijos",
+    id: "fixed",
+    description:
+      "Sistema para la gestion de activos fijos, con generacion de codigos QR para facilitar su identificacion y seguimiento.",
+    image: "/public/saf.png",
+    link: "#",
+  },
+  {
+    title: "Sistema de archivo multimedia - 2023",
+    label: "Archivo Multimedia",
+    id: "rh",
+    description:
+      "Sistema para la gestion y archivo de contenido multimedia, permitiendo una organizacion eficiente y facil acceso a los recursos digitales.",
+    image: "/public/box.png",
+    link: "#",
+  },
+  {
+    title: "Sistema de Control Biometrico - 2022",
+    label: "Control Biometrico",
+    id: "biometric",
+    description:
+      "Sistema para el control de acceso mediante tecnologia biometrica.",
+    image: "/public/comida.png",
+    link: "#",
+  }
+];
+---
+
+<ul class="flex gap-2 text-gray-200 pb-2" id="projects-menu">
+    {
+    proyects.map((proyect, idx) => {
+        return (
+            <li class="menu-btn bg-gray-900 p-2 px-4 rounded-lg cursor-pointer transition-all duration-350" id={`btn-${proyect.id}`}>
+                {proyect.label}
+            </li>
+        );
+    })
+    }
+</ul>
+<div class="flex justify-center flex-col items-center p-4 text-gray-200 relative"
+    id="projects-container"
+>
+    {proyects.map((proyect, index) => {
+        return (
+            <div
+                id={proyect.id}
+                class="project-card absolute top-0 mt-5 w-[calc(100vw-30rem)] h-[calc(100vh-15rem)] bg-gray-900 p-4 rounded-lg shadow-lg"
+            >
+                <img src={proyect.image} alt={proyect.title} class="w-full h-full object-contain rounded-md"
+                />
+                <h3 class="text-2xl font-bold absolute left-6 bottom-6 bg-black/50 px-3 py-1 rounded">{proyect.title}</h3>
+            </div>
+        );
+    })}
+</div>
+
+<script is:inline>
+  const container = document.getElementById('projects-container');
+  const menuItems = Array.from(document.querySelectorAll('#projects-menu .menu-btn'));
+  const projectCards = Array.from(container.querySelectorAll('.project-card'));
+  
+  let activeIndex = null;
+  let isAnimating = false;
+  let isLocked = false;
+
+  function setActive(idx) {
+    if (isAnimating) return;
+    isAnimating = true;
+    
+    activeIndex = idx;
+    isLocked = true;
+    
+    projectCards.forEach((card, i) => {
+      card.classList.remove('active', 'fade-out');
+      if (i === idx) {
+        card.classList.add('active');
+        card.style.zIndex = '100';
+      } else {
+        card.classList.add('fade-out');
+        card.style.zIndex = String(40 - i);
+      }
+    });
+
+    menuItems.forEach((mi, i) => {
+      if (i === idx) {
+        mi.classList.add('active');
+      } else {
+        mi.classList.remove('active');
+      }
+    });
+
+    setTimeout(() => {
+      isAnimating = false;
+    }, 500);
+  }
+
+  function clearActive() {
+    if (isAnimating) return;
+    
+    activeIndex = null;
+    isLocked = false;
+    projectCards.forEach(card => {
+      card.classList.remove('active', 'fade-out');
+      card.style.zIndex = '';
+    });
+    menuItems.forEach(mi => {
+      mi.classList.remove('active');
+    });
+  }
+
+  // Menu item interactions
+  menuItems.forEach((item, idx) => {
+    item.addEventListener('mouseenter', () => {
+      if (!isLocked && activeIndex === null && !isAnimating) {
+        setActive(idx);
+      }
+    });
+
+    item.addEventListener('mouseleave', () => {
+      if (!isLocked && activeIndex === null && !isAnimating) {
+        clearActive();
+      }
+    });
+
+    item.addEventListener('click', (e) => {
+      e.stopPropagation();
+      
+      if (activeIndex === idx) {
+        // Si es el mismo proyecto, no hacer nada
+        return;
+      } 
+      setActive(idx);
+      
+    });
+  });
+
+  // Card click interaction
+  projectCards.forEach((card, idx) => {
+    card.addEventListener('click', (e) => {
+      e.stopPropagation();
+      
+      if (activeIndex === idx) {
+        // Si es el mismo proyecto, no hacer nada
+        return;
+      } 
+      setActive(idx);
+      
+    });
+  });
+
+
+  setActive(0);
+</script>
+
+<style>
+  .menu-btn {
+    position: relative;
+    overflow: hidden;
+    border-bottom: 2px solid transparent;
+    transition: all 350ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .menu-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #60a5fa, #3b82f6);
+    transition: width 350ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .menu-btn:hover {
+    background-color: rgba(96, 165, 250, 0.1);
+  }
+
+  .menu-btn.active {
+    background-color: rgba(96, 165, 250, 0.15);
+    color: #60a5fa;
+    font-weight: 500;
+  }
+
+  .menu-btn.active::after {
+    width: 100%;
+  }
+
+  .project-card {
+    transition: clip-path 500ms ease-out;
+    will-change: clip-path;
+  }
+
+  @keyframes curtainOpen {
+    0% {
+      clip-path: inset(0 50% 0 50%);
+    }
+    100% {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  @keyframes curtainCloseRight {
+    0% {
+      clip-path: inset(0 0 0 0);
+    }
+    100% {
+      clip-path: inset(0 100% 0 0);
+    }
+  }
+
+  .project-card.active {
+    animation: curtainOpen 500ms ease-out forwards;
+  }
+
+  .project-card.fade-out {
+    animation: curtainCloseRight 500ms ease-out forwards;
+  }
+
+  .project-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+</style>

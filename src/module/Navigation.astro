@@ -1,56 +1,61 @@
 ---
 import { Icon } from 'astro-icon/components'
-const { title } = Astro.props;
 ---
 <nav class="fixed z-50 bottom-5 left-1/2 transform -translate-x-1/2">
     <ul class="text-gray-200 flex bg-gray-900 w-auto py-2 px-2 rounded-2xl items-center ">
         <li class=" transition-transform transform duration-300 hover:-translate-y-6 px-2 hover:scale-150" title="Inicio">
-            <input type="radio" id="home"  class="fixed opacity-0 "/>
-            <label for="home" >
+            <!-- <input type="radio" name="carousel" id="home"  class="fixed opacity-0" /> -->
+            <a href="#Inicio" >
                 <div class="bg-gray-700 p-2 rounded-full cursor-pointer " >
                     <Icon name="home" class="md:w-7 md:h-7 " />
                 </div>
-            </label>
+            </a>
         </li>
         <li class="cursor-pointer  transition-transform transform duration-300 hover:-translate-y-6 px-2 hover:scale-150" title="Proyectos">
-            <input type="radio" id="projects"  class="fixed opacity-0 "/>
-            <label for="projects">
+            <!-- <input type="radio" name="carousel" id="projects"  class="fixed opacity-0 "/> -->
+            <a href="#Proyectos">
                 <div class="bg-gray-700 p-2 rounded-full cursor-pointer">
                     <Icon name="briefcase" class="md:w-7 md:h-7 " />
                 </div>
-            </label>
+            </a>
         </li>
         <li class="cursor-pointer  transition-transform transform duration-300 hover:-translate-y-6 px-2 hover:scale-150" title="Experiencia">
-            <input type="radio" id="experience"  class="fixed opacity-0 "/>
-            <label for="experience">
+            <a href="#Historial">
                 <div class="bg-gray-700 p-2 rounded-full cursor-pointer">
                     <Icon name="chart" class="md:w-7 md:h-7 " />
                 </div>
-            </label>
+            </a>
         </li>
         <li class="cursor-pointer  transition-transform transform duration-300 hover:-translate-y-6 px-2 hover:scale-150" title="Currículum">
-            <input type="radio" id="curriculum"  class="fixed opacity-0 "/>
-            <label for="curriculum">
+            <!-- <input type="radio" name="carousel" id="curriculum"  class="fixed opacity-0 "/> -->
+            <!-- <label for="curriculum"> -->
+            <a href="#Curriculum">
                 <div class="bg-gray-700 p-2 rounded-full cursor-pointer">
                     <Icon name="user" class="md:w-7 md:h-7 " />
                 </div>
-            </label>
+            </a>
+        </li>
+        <li class="cursor-pointer  transition-transform transform duration-300 hover:-translate-y-6 px-2 hover:scale-150" title="LinkedIn">
+            <a href="https://www.linkedin.com/in/tomy-bautista-466816216/" target="_blank" rel="noopener noreferrer">
+                <div class="bg-gray-700 p-2 rounded-full cursor-pointer">
+                    <Icon name="linkedin" class="md:w-7 md:h-7 " />
+                </div>
+            </a>
         </li>
         <li class="cursor-pointer  transition-transform transform duration-300 hover:-translate-y-6 px-2 hover:scale-150" title="GitHub">
-            <input type="radio" id="github"  class="fixed opacity-0 "/>
-            <label for="github">
+            <!-- <input type="radio" name="carousel" id="github"  class="fixed opacity-0 "/> -->
+            <a href="https://github.com/tomyivan/" target="_blank" rel="noopener noreferrer">
                 <div class="bg-gray-700 p-2 rounded-full cursor-pointer">
                     <Icon name="github" class="md:w-7 md:h-7 " />
                 </div>
-            </label>
+            </a>
         </li>
-        <li class="cursor-pointer  transition-transform transform duration-300 hover:-translate-y-6 px-2 hover:scale-150" title="Contactame">
-            <input type="radio" id="contact"  class="fixed opacity-0 "/>
-            <label for="contact">
+        <!-- <li class="cursor-pointer  transition-transform transform duration-300 hover:-translate-y-6 px-2 hover:scale-150" title="Contactame">
+            <a href="#Contactame">
                 <div class="bg-gray-700 p-2 rounded-full cursor-pointer">
                     <Icon name="email" class="md:w-7 md:h-7 " />
                 </div>
-            </label>
-        </li>
+            </a>
+        </li> -->
     </ul>
 </nav>

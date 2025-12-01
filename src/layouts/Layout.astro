@@ -1,7 +1,6 @@
 ---
-const { title } = Astro.props;
+// const { title } = Astro.props;
 import "../style/global.css"
-// import "../style/transition.css"
 ---
 
 <!doctype html>
@@ -9,15 +8,14 @@ import "../style/global.css"
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/public/logo.png" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Tomy Bautista | {title}</title>
+		<title>Tomy Bautista </title>
 		<meta name="description" content="It's Tomy Bautista's  personal resume website." />
 		<meta name="author" content="Tomy Bautista" />
-		<link rel="stylesheet" href="/style/transition.css" />
 	</head>
-	<body class="h-screen w-screen">
-		<astro:transition />
+	<body>
+	
 		<slot />
 	</body>
 </html>
