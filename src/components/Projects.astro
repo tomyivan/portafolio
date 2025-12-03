@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 const proyects = [
   {
     title: "Sistema de Activos Fijos con generacion de QR - 2024",
@@ -6,7 +8,7 @@ const proyects = [
     id: "fixed",
     description:
       "Sistema para la gestion de activos fijos, con generacion de codigos QR para facilitar su identificacion y seguimiento.",
-    image: "/public/saf.png",
+    image: "/saf.png",
     link: "#",
   },
   {
@@ -15,7 +17,7 @@ const proyects = [
     id: "rh",
     description:
       "Sistema para la gestion y archivo de contenido multimedia, permitiendo una organizacion eficiente y facil acceso a los recursos digitales.",
-    image: "/public/box.png",
+    image: "/box.png",
     link: "#",
   },
   {
@@ -24,7 +26,7 @@ const proyects = [
     id: "biometric",
     description:
       "Sistema para el control de acceso mediante tecnologia biometrica.",
-    image: "/public/comida.png",
+    image: "/comida.png",
     link: "#",
   }
 ];
@@ -50,7 +52,11 @@ const proyects = [
                 id={proyect.id}
                 class="project-card absolute top-0 mt-5 w-[calc(100vw-30rem)] h-[calc(100vh-15rem)] bg-gray-900 p-4 rounded-lg shadow-lg"
             >
-                <img src={proyect.image} alt={proyect.title} class="w-full h-full object-contain rounded-md"
+                <Image 
+                    src={proyect.image} 
+                    alt={proyect.title} 
+                    width={800} 
+                    height={600}
                 />
                 <h3 class="text-2xl font-bold absolute left-6 bottom-6 bg-black/50 px-3 py-1 rounded">{proyect.title}</h3>
             </div>
