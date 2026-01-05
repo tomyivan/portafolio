@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 const proyects = [
   {
     title: "Sistema de Activos Fijos con generacion de QR - 2024",
-    label: "Activo Fijos",
+    label: "Activos Fijos",
     id: "fixed",
     description:
       "Sistema para la gestion de activos fijos, con generacion de codigos QR para facilitar su identificacion y seguimiento.",
@@ -32,25 +32,25 @@ const proyects = [
 ];
 ---
 
-<ul class="flex gap-2 text-gray-200 pb-2" id="projects-menu">
+<ul class="flex md:flex-row flex-col md:gap-2 text-gray-200 pb-2 overflow-auto md:h-auto max-h-25" id="projects-menu">
     {
     proyects.map((proyect, idx) => {
         return (
-            <li class="menu-btn bg-gray-900 p-2 px-4 rounded-lg cursor-pointer transition-all duration-350" id={`btn-${proyect.id}`}>
+            <li class="menu-btn text-sm md:text-md  bg-gray-900 p-2 px-4 rounded-lg cursor-pointer transition-all duration-350" id={`btn-${proyect.id}`}>
                 {proyect.label}
             </li>
         );
     })
     }
 </ul>
-<div class="flex justify-center flex-col items-center p-4 text-gray-200 relative"
+<div class="flex justify-center flex-col items-center p-4 text-gray-200 relative h-full"
     id="projects-container"
 >
     {proyects.map((proyect, index) => {
         return (
             <div
                 id={proyect.id}
-                class="project-card absolute top-0 mt-5 w-[calc(100vw-30rem)] h-[calc(100vh-15rem)] bg-gray-900 p-4 rounded-lg shadow-lg"
+                class="project-card absolute top-0 mt-5 w-auto md:w-[calc(100vw-30rem)] h-full bg-gray-900 md:p-4 rounded-lg shadow-lg"
             >
                 <Image 
                     src={proyect.image} 
@@ -58,7 +58,7 @@ const proyects = [
                     width={800} 
                     height={600}
                 />
-                <h3 class="text-2xl font-bold absolute left-6 bottom-6 bg-black/50 px-3 py-1 rounded">{proyect.title}</h3>
+                <h3 class="md:text-2xl text-xs font-bold absolute left-6 bottom-6 bg-black/50 px-3 py-1 rounded">{proyect.title}</h3>
             </div>
         );
     })}

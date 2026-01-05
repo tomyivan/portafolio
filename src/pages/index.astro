@@ -1,5 +1,6 @@
 	---
 	import Welcome from '../components/Welcome.astro';
+	import Menu from '../module/Menu.astro';
 	// import Presentation from '../components/Presentation.astro';
 	import Home from '../components/Home.astro';
 	import Layout from '../layouts/Layout.astro';
@@ -51,11 +52,17 @@
 	}
 </style>
 <Layout >
-		<Preload client:load />
+		<!-- <Preload client:load /> -->
 		<EfecctedStar client:load />
-		<h1 class="text-center text-6xl font-bold py-4 text-gray-200">{name}</h1>
-		<section class="flex justify-center items-center overflow-hidden">
-			<div class="min-w-2/3">
+		<section class="w-full  px-12 h-screen flex justify-between items-center gap-10 " id="Inicio">
+			<Menu />
+			<div>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error consectetur dolore natus repellat fuga consequatur qui itaque fugit, minima aperiam beatae doloremque voluptas, nam quisquam eaque provident magnam odit perferendis.
+			</div>
+		</section>
+		<!-- <section class="flex justify-center flex-col items-center overflow-hidden">
+			<h1 class="text-center md:text-6xl text-2xl  font-bold py-4 text-gray-200">{name}</h1>
+			<div class="md:min-w-2/3 w-full px-2">
 				<div class="h-[calc(100vh-10rem)]  flex justify-center relative">
 					<div class="py-4 slide absolute h-full w-full text-wrap" id="Inicio" >					
 						<Home />
@@ -70,6 +77,6 @@
 			</div>
 		</section>
 		
-		<Navigation />
+		<Navigation /> -->
 		<!-- <Welcome /> -->
 	</Layout>
