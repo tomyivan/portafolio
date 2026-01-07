@@ -1,7 +1,9 @@
 ---
-const presentation = "Desarrollador web fullstack creando experiencias web completas, de la idea al producto."
-const description = "Desarrollo soluciones digitales que combinan interfaces atractivas y lógica sólida, trabajando tanto en el frontend como en el backend"
-import { Icon } from 'astro-icon/components'
+// const presentation = "Desarrollador web fullstack creando experiencias web completas, de la idea al producto."
+// const description = "Desarrollo soluciones digitales que combinan interfaces atractivas y lógica sólida, trabajando tanto en el frontend como en el backend"
+const hello = "¡Hola! Mucho gusto.";
+const phrase = "Desarrollo soluciones digitales que combinan interfaces atractivas y lógica sólida, trabajando tanto en el frontend como en el backend.";
+
 ---
 <style>
 .button {
@@ -43,15 +45,21 @@ import { Icon } from 'astro-icon/components'
         background-position: 0 0;
     }
 }
+.hello-text {
+    font-size: 6rem;
+    color: #00ffffa9;
+    text-shadow: 0 0 5px #00d1d100,0 0 10px #01cfcf00,0 0 20px #03ffffba;
+}
 </style>
-<div class="w-full  flex flex-col justify-center items-center h-full gap-3">
-    <h1 class="font-bold md:text-5xl text-center text-xl text-gray-200">{presentation}</h1>
-    <p class="text-center text-gray-400 font-semibold w-[80%]">{description}</p>
-    <div class="flex justify-center items-center gap-4">
+<div class="w-full  flex flex-col justify-center text-3xl min-h-[80vh] gap-3 text-cyan-400">
+    <p class="font-semibold md:text-8xl  hello-text">{hello}</p>
+    <h2 class="font-semibold md:text-4xl text-lg mt-4">{phrase}</h2>
+    <!-- <p class="text-center text-gray-400 font-semibold w-[80%]">{description}</p> -->
+    <!-- <div class="flex justify-center items-center gap-4">
         <a class="button" href="#Proyectos">Ver Proyectos</a>
         <a class="button" href="/CV_Tomy_Ivan_Bautista.pdf" target="_blank" rel="noopener noreferrer">Ver Curriculum</a>
-    </div>
-    <ul class="flex justify-center items-center gap-4 mt-4 text-gray-200">
+    </div> -->
+    <!-- <ul class="flex justify-center items-center gap-4 mt-4 text-gray-200">
         <li>            
             <Icon name="php" class="md:w-7 md:h-7 " />
         </li>
@@ -82,5 +90,5 @@ import { Icon } from 'astro-icon/components'
         <li>            
             <Icon name="postgresql" class="md:w-7 md:h-7 " />
         </li>
-    </ul>
+    </ul> -->
 </div>

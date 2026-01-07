@@ -10,21 +10,25 @@ const position = "Desarrollador Full Stack";
     .shadow-dark-cyan {
         box-shadow: 0px 0px 20px 0px rgb(0 255 255 / 59%), 0 0px 20px -1px rgb(0 255 255 / 59%);
     }
+
 </style>
-<section class=" flex flex-col justify-between bg-dark-cyan shadow-dark-cyan w-1/3 min-h-[80vh] py-8 opacity-75  p-4 rounded-lg border-2 border-cyan-600">
-    <div class="text-cyan-600 text-2xl font-bold mb-4 text-center">
+<!-- desktop -->
+
+
+<section class=" sm:flex hidden flex-col justify-between bg-dark-cyan shadow-dark-cyan w-[40%] min-h-[80vh] py-8 opacity-75  p-4 rounded-xl border-4 border-cyan-500">
+    <div class="text-cyan-200 text-2xl font-bold mb-4 text-center">
         <p class="font-bold">{ name }</p>
         <p class="text-lg font-semibold">{ position }</p> 
     </div>
     <div role="menu" class="p-2 rounded-2xl border-2 border-cyan-600 shadow-dark-cyan ">
-        <ul class="flex flex-col text-gray-200 font-semibold text-center">
+        <ul class="flex flex-col text-cyan-400 font-semibold text-center ">
             <li class="cursor-pointer hover:bg-cyan-700 p-2 rounded-lg">INICIO</li>        
             <li class="cursor-pointer hover:bg-cyan-700 p-2 rounded-lg">HABILIDADES</li>
             <li class="cursor-pointer hover:bg-cyan-700 p-2 rounded-lg">PROYECTOS</li>
             <li class="cursor-pointer hover:bg-cyan-700 p-2 rounded-lg">FORMACION</li>
         </ul>
     </div>
-    <div role="option" class="text-center text-gray-200 font-bold text-xl ">
+    <div role="option" class="text-center font-bold text-xl text-cyan-200">
         <div class="mb-4">
             Contactame            
         </div>
@@ -38,7 +42,73 @@ const position = "Desarrollador Full Stack";
             <li class="cursor-pointer hover:text-cyan-400">
                 <Icon name="email" class="md:w-7 md:h-7 " />
             </li>
+            <li class="cursor-pointer hover:text-cyan-400">
+                <Icon name="phoneWhatsapp" class="md:w-7 md:h-7 " />
+            </li>
         </ul>
     </div>
-       
 </section>
+
+<!-- mobile -->
+<header class="sm:hidden text-cyan-200  items-center bg-dark-cyan fixed top-4  shadow-dark-cyan w-[98%]  py-4 px-6 opacity-75  rounded-lg border-2 border-cyan-600 " >
+    <div class=" text-2xl font-bold  text-center flex flex-row justify-between items-center ">
+        <p class="font-bold">{ name }</p>
+        <Icon 
+            name={"down-arrow"} class="w-7 h-7 text-cyan-400 hover:text-cyan-200 cursor-pointer transition-all ease-in-out duration-300 " id="menu-icon"
+        />
+    </div>
+    <div class="flex flex-row justify-between items-center h-0 overflow-hidden transition-all ease-in-out duration-300" id="contact"
+    >
+        <span class="text-2xl font-bold">
+            Contactame
+        </span>
+        <ul class="flex flex-row justify-center gap-3 items-center overflow-hidden">
+            <li class="cursor-pointer hover:text-cyan-400 ">
+                <Icon name="linkedin" class="w-7 h-7 " />
+            </li>
+            <li class="cursor-pointer hover:text-cyan-400 ">
+                <Icon name="github" class="w-7 h-7 " />
+            </li>
+            <li class="cursor-pointer hover:text-cyan-400 ">
+                <Icon name="email" class="w-7 h-7 " />
+            </li>
+            <li class="cursor-pointer hover:text-cyan-400 ">
+                <Icon name="phoneWhatsapp" class="w-7 h-7 " />
+            </li>
+        </ul>
+    </div>
+</header>
+
+<section class="sm:hidden fixed bottom-4  bg-dark-cyan shadow-dark-cyan w-[98%] h-16  opacity-75  rounded-lg border-2 border-cyan-600">    
+        <ul class="flex flex-row text-cyan-400 font-semibold justify-around items-center transition-all ease-in-out duration-300 ">
+            <li class="cursor-pointer hover:bg-cyan-700 py-4 px-6 rounded-lg">
+                <Icon name="home" class="w-7 h-7" />    
+            </li>        
+            <li class="cursor-pointer hover:bg-cyan-700 py-4 px-6 rounded-lg">
+                <Icon name="user" class="w-7 h-7 " />
+            </li>
+            <li class="cursor-pointer hover:bg-cyan-700 py-4 px-6 rounded-lg">
+                <Icon name="briefcase" class="w-7 h-7 " />
+            </li>
+            <li class="cursor-pointer hover:bg-cyan-700 py-4 px-6 rounded-lg">
+                <Icon name="chart" class="w-7 h-7 " />
+            </li>
+        </ul>   
+</section>
+
+<script type="text/javascript">
+    const menuIcon = document.getElementById('menu-icon');
+
+    menuIcon.addEventListener('click', () => {
+        const contact = document.getElementById('contact');
+        if (contact.classList.contains('h-0')) {
+            contact.classList.remove('h-0', 'overflow-hidden');
+            contact.classList.add('h-12');
+            menuIcon.classList.add('rotate-180');
+        } else {
+            contact.classList.add('h-0', 'overflow-hidden');
+            contact.classList.remove('h-12');
+            menuIcon.classList.remove('rotate-180');
+        }
+    });
+</script>

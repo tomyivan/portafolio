@@ -4,11 +4,13 @@
 	// import Presentation from '../components/Presentation.astro';
 	import Home from '../components/Home.astro';
 	import Layout from '../layouts/Layout.astro';
+	import AboutMe from '../components/AboutMe.astro';
 	import Navigation from '../module/Navigation.astro';
 	import EfecctedStar from '../components/EfecctedStar.astro';
 	import Projects from '../components/Projects.astro';
 	import Experience from '../components/Experience.astro';
 	import Preload from '../components/Preload.astro';
+	import Skills from '../components/Skills.astro';
 	const name = "Tomy Bautista";
 	// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 	// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -50,15 +52,61 @@
 	.scrollbar-color::-webkit-scrollbar-thumb:hover {
 		background-color: #6B7280;
 	}
+
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+
+	.no-scrollbar {
+	-ms-overflow-style: none;  /* IE / Edge */
+	scrollbar-width: none;     /* Firefox */
+	}
+
+	/* .mask-fade {
+		mask-image: linear-gradient(
+			to top,
+			transparent 0%,
+			black 30%,
+			black 100%
+		);
+		
+	}
+
+	@keyframes maskReveal {
+	from {
+		mask-position: 0% 100%;
+	}
+	to {
+		mask-position: 0% 0%;
+	}
+	}
+
+	.animate-mask {
+	animation: maskReveal 1s ease-out forwards;
+	} */
+
 </style>
 <Layout >
 		<!-- <Preload client:load /> -->
-		<EfecctedStar client:load />
-		<section class="w-full  px-12 h-screen flex justify-between items-center gap-10 " id="Inicio">
-			<Menu />
-			<div>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error consectetur dolore natus repellat fuga consequatur qui itaque fugit, minima aperiam beatae doloremque voluptas, nam quisquam eaque provident magnam odit perferendis.
+		<!-- <EfecctedStar client:load /> -->
+		<section class="sm:px-12 px-4 h-screen flex flex-col  sm:flex-row-reverse justify-between items-center gap-10 w-full" id="Inicio">
+			
+			<div class=" h-[80vh] mt-20 sm:m-0 rounded-lg mask-contain sm:mask-t-from-70% sm:mask-b-from-70% mask-t-from-80% mask-b-from-90%">
+				<div class="flex flex-col overflow-auto h-full no-scrollbar">
+					<Home 	/>	
+
+					<AboutMe	/>		
+					<Skills	/>
+					<Projects/>
+					<!-- <Home 	/>				 -->
+					<!-- Home 	/>				
+					<Home 	/>				 -->
+
+				</div>
+				<!-- <div class="sticky bottom-0 left-0 w-full h-1/4 z-997 m-0 pointer-events-none MuiBox-root css-0">				
+				</div> -->
 			</div>
+			<Menu />
 		</section>
 		<!-- <section class="flex justify-center flex-col items-center overflow-hidden">
 			<h1 class="text-center md:text-6xl text-2xl  font-bold py-4 text-gray-200">{name}</h1>

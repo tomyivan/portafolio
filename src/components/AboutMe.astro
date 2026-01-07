@@ -1,0 +1,19 @@
+---
+const aboutMe = {
+    title: "Sobre Mí",
+    description: {
+        firstPharagraph: "¡Hola! Soy Tomy Ivan Bautista, un desarrollador de software apasionado por crear soluciones innovadoras y eficientes. Con experiencia en diversas tecnologías y lenguajes de programación, me especializo en el desarrollo web y aplicaciones móviles.",
+        secondPharagraph: "Me encanta enfrentar nuevos desafíos y aprender constantemente para mejorar mis habilidades. Creo en el poder de la tecnología para transformar ideas en realidades y estoy comprometido a entregar productos de alta calidad que superen las expectativas de los usuarios.",
+        thirdPharagraph: "Cuando no estoy codificando, disfruto explorando nuevas tendencias tecnológicas, jugando videojuegos o pasando tiempo al aire libre y ejercitandome. Siempre estoy abierto a colaborar en proyectos emocionantes y a conectarme con otros profesionales del sector.",
+    }
+    }
+---
+
+<div class="w-full  flex flex-col text-cyan-400 " id="AboutMe">
+    <h2 class="text-4xl font-bold mb-12 ">{aboutMe.title}</h2>
+    <div class="max-w-4xl text-lg space-y-8 font-semibold">
+        <p>{aboutMe.description.firstPharagraph}</p>
+        <p>{aboutMe.description.secondPharagraph}</p>
+        <p>{aboutMe.description.thirdPharagraph}</p>
+    </div>
+</div>
