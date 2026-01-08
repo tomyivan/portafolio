@@ -15,14 +15,6 @@ const skils = [
 ]
 ---
 <style>
-    .bg-dark-cyan {
-        background: linear-gradient(135deg, rgb(0 58 109 / 0.8), rgb(0 100 150 / 0.6));
-    }
-
-    .skills-container {
-        background: radial-gradient(circle at center, rgba(0, 255, 255, 0.05), rgba(0, 100, 150, 0.02));
-        animation: fadeInContainer 0.8s ease;
-    }
 
     @keyframes fadeInContainer {
         from {
@@ -146,10 +138,7 @@ const skils = [
     }
 
     @media (max-width: 1280px) {
-        .skills-container {
-            padding: 2rem 1rem;
-            gap: 2rem;
-        }
+    
         .skill-card {
             width: 160px;
             height: 200px;
@@ -185,16 +174,16 @@ const skils = [
     }
 </style>
 
-<section class="skills-container flex flex-wrap justify-center items-center gap-2 min-h-[80vh]  transition-all duration-300">
+<section class=" flex flex-wrap justify-center items-center gap-2  transition-all duration-300" id="habilidades">
     {
-    <h2 class="w-full text-3xl font-bold  text-cyan-300 ">{title}</h2>
+    <h2 class="w-full text-3xl font-bold  text-cyan-300">{title}</h2>
     }
     {skils.map((skill) => (
         <div class="skill-card flex flex-col items-center justify-center rounded-2xl p-6 bg-dark-cyan w-44 h-52 cursor-pointer">
             <div class="skill-icon mb-2">
                 <Icon name={skill.name} class="w-20 h-20" />
             </div>
-            <div class="skill-content">
+            <div >
                 <span class="skill-label">{skill.label}</span>
                 <span class="skill-category">{skill.category}</span>
             </div>

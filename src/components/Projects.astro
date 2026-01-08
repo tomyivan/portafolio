@@ -31,16 +31,19 @@ const proyects = [
   }
 ];
 ---
-<ul class="flex flex-wrap">
-  {proyects.map((proyect) => (
-    <li class="proyect-card bg-dark-cyan rounded-2xl p-4 m-4 shadow-lg w-full max-w-md hover:scale-105 transition-transform duration-300 cursor-pointer">
-      <img
-        src={proyect.image}
-        alt={proyect.title}
-        class="w-full h-48 object-cover rounded-t-2xl mb-4"
-      />
-      <h3 class="text-xl font-bold mb-2 text-cyan-200">{proyect.title}</h3>
-      {/* <p class="text-cyan-400 mb-4">{proyect.description}</p> */}
-    </li>
-  ))}
-</ul>
+<div class="w-full flex flex-col justify-center items-center py-8 " id="Proyectos">
+    <h2 class="text-4xl font-bold  text-cyan-200">Proyectos Destacados</h2>
+    <ul class="flex flex-wrap ">
+      {proyects.map((proyect) => (
+        <li class="proyect-card bg-dark-cyan rounded-2xl p-4 m-4 shadow-lg w-full max-w-md hover:scale-105 transition-transform duration-300 cursor-pointer">
+          <img
+            src={proyect.image}
+            alt={proyect.title}
+            class="w-full h-48 object-cover rounded-t-2xl mb-4"
+          />
+          <h3 class="text-xl font-bold mb-2 text-cyan-200">{proyect.title}</h3>
+          {/* <p class="text-cyan-400 mb-4">{proyect.description}</p> */}
+        </li>
+      ))}
+    </ul>
+</div>
