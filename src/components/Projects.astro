@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 
-const proyects = [
+const projects = [
   {
     title: "Sistema de Activos Fijos con generacion de QR - 2024",
     label: "Activos Fijos",
@@ -9,6 +9,7 @@ const proyects = [
     description:
       "Sistema para la gestion de activos fijos, con generacion de codigos QR para facilitar su identificacion y seguimiento.",
     image: "/saf.png",
+    tecnologies: ["NODEJS", "SQLSERVER", "HTML", "CSS", "REACT", "TAILWIND", "TYPESCRIPT", "EXPRESS" ],
     link: "#",
   },
   {
@@ -18,7 +19,7 @@ const proyects = [
     description:
       "Sistema para la gestion y archivo de contenido multimedia, permitiendo una organizacion eficiente y facil acceso a los recursos digitales.",
     image: "/box.png",
-    link: "#",
+    tecnologies: ["NODEJS", "SQLSERVER", "HTML", "CSS", "REACT", "TAILWIND", "JAVASCRIPT", "EXPRESS" ],
   },
   {
     title: "Sistema de Control Biometrico - 2022",
@@ -27,22 +28,46 @@ const proyects = [
     description:
       "Sistema para el control de acceso mediante tecnologia biometrica.",
     image: "/comida.png",
+    tecnologies: ["NODEJS", "SQLSERVER", "HTML", "CSS", "REACT", "BOOTSTRAP", "JAVASCRIPT", "EXPRESS" ],
+    link: "#",
+  },
+  {
+    title: "Sistema de Activos Fijos V1 con generacion de QR - 2023",
+    label: "Activos Fijos V1",
+    id: "fixedV1",
+    description:
+      "Primera version del sistema para la gestion de activos fijos, con generacion de codigos QR para facilitar su identificacion y seguimiento.",
+    image: "/activos-php-2.png",
+    tecnologies: ["PHP", "MARIADB", "HTML", "CSS", "REACT", "BOOTSTRAP", "CODEIGNITER", "ADMINLTE" ],
     link: "#",
   }
 ];
 ---
-<div class="w-full flex flex-col justify-center items-center py-8 " id="Proyectos">
+<style>
+  .project-card:hover .tecnologies {
+    display: block;
+  }
+</style>
+<div class="w-full flex flex-col  py-8 " id="proyectos">
     <h2 class="text-4xl font-bold  text-cyan-200">Proyectos Destacados</h2>
-    <ul class="flex flex-wrap ">
-      {proyects.map((proyect) => (
-        <li class="proyect-card bg-dark-cyan rounded-2xl p-4 m-4 shadow-lg w-full max-w-md hover:scale-105 transition-transform duration-300 cursor-pointer">
+    <ul class="flex flex-wrap justify-center md:justify-start w-full">
+      {projects.map((project) => (
+        <li class="project-card bg-dark-cyan rounded-2xl  m-4 shadow-lg w-full max-w-md hover:scale-105 transition-transform duration-300 cursor-pointer relative">
           <img
-            src={proyect.image}
-            alt={proyect.title}
+            src={project.image}
+            alt={project.title}
             class="w-full h-48 object-cover rounded-t-2xl mb-4"
           />
-          <h3 class="text-xl font-bold mb-2 text-cyan-200">{proyect.title}</h3>
-          {/* <p class="text-cyan-400 mb-4">{proyect.description}</p> */}
+          <h3 class="text-xl font-bold mb-2 text-cyan-200">{project.title}</h3>
+          <div class="absolute top-0 bg-dark-cyan p-2 rounded-lg h-full w-full hidden tecnologies"> 
+            <div class="absolute flex-wrap flex gap-2 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              {project.tecnologies.map((tech) => (
+                <span class="bg-cyan-600 text-white text-sm font-semibold px-2 py-1 rounded-full ">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
         </li>
       ))}
     </ul>

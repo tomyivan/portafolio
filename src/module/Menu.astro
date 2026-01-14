@@ -15,9 +15,10 @@ const position = "Desarrollador Full Stack";
     <div role="menu" class="p-2 rounded-2xl border-2 border-cyan-600 shadow-dark-cyan ">
         <ul class="flex flex-col text-cyan-400 font-semibold text-center ">
             <li class="cursor-pointer hover:bg-cyan-700 p-2 rounded-lg">INICIO</li>        
+            <li class="cursor-pointer hover:bg-cyan-700 p-2 rounded-lg">SOBRE MI</li>
             <li class="cursor-pointer hover:bg-cyan-700 p-2 rounded-lg">HABILIDADES</li>
             <li class="cursor-pointer hover:bg-cyan-700 p-2 rounded-lg">PROYECTOS</li>
-            <li class="cursor-pointer hover:bg-cyan-700 p-2 rounded-lg">FORMACION</li>
+            <li class="cursor-pointer hover:bg-cyan-700 p-2 rounded-lg">EXPERIENCIA</li>
         </ul>
     </div>
     <div role="option" class="text-center font-bold text-xl text-cyan-200">
@@ -26,16 +27,24 @@ const position = "Desarrollador Full Stack";
         </div>
         <ul class="flex flex-row justify-center gap-3 items-center">
             <li class="cursor-pointer hover:text-cyan-400">
-                <Icon name="linkedin" class="md:w-7 md:h-7 " />
+                <a href="https://www.linkedin.com/in/tomy-bautista-466816216/" target="_blank" rel="noopener noreferrer">
+                    <Icon name="linkedin" class="md:w-7 md:h-7 " />
+                </a>
             </li>
             <li class="cursor-pointer hover:text-cyan-400">
-                <Icon name="github" class="md:w-7 md:h-7 " />
+                <a href="https://github.com/tomyivan/" target="_blank" rel="noopener noreferrer">
+                    <Icon name="github" class="md:w-7 md:h-7 " />
+                </a>
             </li>
             <li class="cursor-pointer hover:text-cyan-400">
-                <Icon name="email" class="md:w-7 md:h-7 " />
+                <a href="mailto:tomyivan3@gmail.com" target="_blank" rel="noopener noreferrer">
+                    <Icon name="email" class="md:w-7 md:h-7 " />
+                </a>
             </li>
             <li class="cursor-pointer hover:text-cyan-400">
-                <Icon name="phoneWhatsapp" class="md:w-7 md:h-7 " />
+                <a href="https://wa.me/+59169952126?text=Hola%20Tomy" target="_blank" rel="noopener noreferrer">
+                    <Icon name="phoneWhatsapp" class="md:w-7 md:h-7 " />
+                </a>
             </li>
         </ul>
     </div>
@@ -56,15 +65,19 @@ const position = "Desarrollador Full Stack";
         </span>
         <ul class="flex flex-row justify-center gap-3 items-center overflow-hidden">
             <li class="cursor-pointer hover:text-cyan-400 ">
+                <a href="https://www.linkedin.com/in/tomy-bautista-466816216/" target="_blank" rel="noopener noreferrer"></a>
                 <Icon name="linkedin" class="w-7 h-7 " />
             </li>
             <li class="cursor-pointer hover:text-cyan-400 ">
+                <a href="https://github.com/tomyivan/" target="_blank" rel="noopener noreferrer"></a>
                 <Icon name="github" class="w-7 h-7 " />
             </li>
             <li class="cursor-pointer hover:text-cyan-400 ">
+                <a href="mailto:tomyivan3@gmail.com" target="_blank" rel="noopener noreferrer"></a>
                 <Icon name="email" class="w-7 h-7 " />
             </li>
             <li class="cursor-pointer hover:text-cyan-400 ">
+                <a href="https://wa.me/+59169952126?text=Hola%20Tomy" target="_blank" rel="noopener noreferrer"></a>
                 <Icon name="phoneWhatsapp" class="w-7 h-7 " />
             </li>
         </ul>
@@ -80,6 +93,9 @@ const position = "Desarrollador Full Stack";
                 <Icon name="user" class="w-7 h-7 " />
             </li>
             <li class="cursor-pointer hover:bg-cyan-700 py-4 px-6 rounded-lg">
+                <Icon name="check" class="w-7 h-7 " />
+            </li>
+            <li class="cursor-pointer hover:bg-cyan-700 py-4 px-6 rounded-lg">
                 <Icon name="briefcase" class="w-7 h-7 " />
             </li>
             <li class="cursor-pointer hover:bg-cyan-700 py-4 px-6 rounded-lg">
@@ -90,7 +106,6 @@ const position = "Desarrollador Full Stack";
 
 <script type="text/javascript">
     const menuIcon = document.getElementById('menu-icon');
-
     menuIcon.addEventListener('click', () => {
         const contact = document.getElementById('contact');
         if (contact.classList.contains('h-0')) {
