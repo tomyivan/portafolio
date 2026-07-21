@@ -1,0 +1,52 @@
+---
+import { translations } from '../i18n/translations'
+const username = "tomyivan";
+const t = translations.es;
+---
+<style>
+    .contrib-box {
+        overflow-x: auto;
+    }
+</style>
+<div class="w-full flex flex-col gap-6 text-white relative pb-10" id="github">
+    <h2 class="text-4xl font-bold text-orange-300" data-i18n="github_title">{t.github_title}</h2>
+    <div class="contrib-card battle-box p-6 contrib-box">
+        <img
+            src={`https://ghchart.rshah.org/ff8c00/${username}`}
+            alt={`Mapa de contribuciones de GitHub de ${username}`}
+            class="w-full min-w-[600px]"
+            loading="lazy"
+        />
+        <a href={`https://github.com/${username}`} target="_blank" rel="noopener noreferrer" class="text-orange-400 hover:underline text-sm mt-4 inline-block" data-i18n="github_link">
+            {t.github_link}
+        </a>
+    </div>
+</div>
+
+<script>
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { applyTranslations, onLangChange } from '../i18n/client';
+gsap.registerPlugin(ScrollTrigger);
+
+applyTranslations();
+onLangChange(() => applyTranslations());
+
+const card = document.querySelector('.contrib-card');
+const scroller = document.getElementById('app-scroll');
+
+if (card) {
+    gsap.set(card, { opacity: 0, y: 30 });
+    gsap.to(card, {
+        opacity: 1,
+        y: 0,
+        duration: 0.7,
+        ease: 'power2.out',
+        scrollTrigger: {
+            trigger: '#github',
+            scroller: scroller ?? window,
+            start: 'top 85%',
+        },
+    });
+}
+</script>

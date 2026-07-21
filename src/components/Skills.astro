@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components'
-const title = "Mis Habilidades";
+import { translations } from '../i18n/translations'
+const title = translations.es.skills_title;
 const skils = [
     { name: 'php', label: 'PHP', category: 'Backend' },
     { name: 'laravel', label: 'Laravel', category: 'Backend' },
@@ -12,49 +13,18 @@ const skils = [
     { name: 'mysql', label: 'MySQL', category: 'Database' },
     { name: 'sqlserver', label: 'SQL Server', category: 'Database' },
     { name: 'postgresql', label: 'PostgreSQL', category: 'Database' },
+    { name: 'nextjs', label: 'Next.js', category: 'Frontend' },
+    { name: 'firebase', label: 'Firebase', category: 'Baas' },
 ]
 ---
 <style>
 
-    @keyframes fadeInContainer {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-    }
-
     .skill-card {
         position: relative;
         overflow: hidden;
-        border: 1px solid rgba(0, 255, 255, 0.3);
-        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        backdrop-filter: blur(8px);
-        animation: slideInSkill 0.6s ease forwards;
-        opacity: 0;
-    }
-
-    .skill-card:nth-child(1) { animation-delay: 0.05s; }
-    .skill-card:nth-child(2) { animation-delay: 0.1s; }
-    .skill-card:nth-child(3) { animation-delay: 0.15s; }
-    .skill-card:nth-child(4) { animation-delay: 0.2s; }
-    .skill-card:nth-child(5) { animation-delay: 0.25s; }
-    .skill-card:nth-child(6) { animation-delay: 0.3s; }
-    .skill-card:nth-child(7) { animation-delay: 0.35s; }
-    .skill-card:nth-child(8) { animation-delay: 0.4s; }
-    .skill-card:nth-child(9) { animation-delay: 0.45s; }
-    .skill-card:nth-child(10) { animation-delay: 0.5s; }
-
-    @keyframes slideInSkill {
-        from {
-            opacity: 0;
-            transform: translateY(30px) scale(0.85);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
+        border: 3px solid #fff;
+        background: #000;
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     .skill-card::before {
@@ -64,7 +34,7 @@ const skils = [
         left: -100%;
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.3), transparent);
+        background: linear-gradient(90deg, transparent, rgba(255, 140, 0, 0.3), transparent);
         transition: left 0.7s ease;
         z-index: 1;
     }
@@ -75,11 +45,9 @@ const skils = [
 
     .skill-card:hover {
         transform: translateY(-12px) scale(1.1);
-        box-shadow: 0 25px 50px rgba(0, 255, 255, 0.3),
-                    0 0 30px rgba(0, 255, 255, 0.2),
-                    inset 0 0 20px rgba(0, 255, 255, 0.1);
-        border-color: rgba(0, 255, 255, 0.8);
-        background: linear-gradient(135deg, rgb(0 100 150 / 0.95), rgb(0 150 200 / 0.8));
+        box-shadow: 0 0 30px rgba(255, 140, 0, 0.5),
+                    inset 0 0 20px rgba(255, 140, 0, 0.1);
+        border-color: #ff8c00;
     }
 
     .skill-card:active {
@@ -87,6 +55,7 @@ const skils = [
     }
 
     .skill-icon {
+        color: #b87c2e;
         position: relative;
         z-index: 2;
         transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -96,9 +65,9 @@ const skils = [
     }
 
     .skill-card:hover .skill-icon {
-        color: #00ffff;
+        color: #ffb347;
         transform: rotate(15deg) scale(1.2);
-        filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.7));
+        filter: drop-shadow(0 0 12px rgba(255, 140, 0, 0.7));
     }
 
     .skill-content {
@@ -112,7 +81,10 @@ const skils = [
         font-size: 1.125rem;
         font-weight: 600;
         transition: all 0.3s ease;
-        color: #00e5ff;
+        color: #ffa726;
+        font-family: 'Press Start 2P', system-ui;
+        font-size: 0.7rem !important;
+        line-height: 1.4;
     }
 
     .skill-category {
@@ -121,7 +93,7 @@ const skils = [
         opacity: 0;
         transform: translateY(-5px);
         transition: all 0.3s ease;
-        color: #0ff;
+        color: #ffb347;
         text-transform: uppercase;
         letter-spacing: 1px;
         margin-top: 0.5rem;
@@ -133,7 +105,7 @@ const skils = [
     }
 
     .skill-card:hover .skill-label {
-        text-shadow: 0 0 12px rgba(0, 255, 255, 0.6);
+        text-shadow: 0 0 12px rgba(255, 140, 0, 0.6);
         letter-spacing: 0.5px;
     }
 
@@ -176,10 +148,10 @@ const skils = [
 
 <section class=" flex flex-wrap justify-center items-center gap-2  transition-all duration-300" id="habilidades">
     {
-    <h2 class="w-full text-3xl font-bold  text-cyan-300">{title}</h2>
+    <h2 class="w-full text-3xl font-bold  text-orange-300" data-i18n="skills_title">{title}</h2>
     }
     {skils.map((skill) => (
-        <div class="skill-card flex flex-col items-center justify-center rounded-2xl p-6 bg-dark-cyan w-44 h-52 cursor-pointer">
+        <div class="skill-card flex flex-col items-center justify-center rounded-2xl p-6 w-44 h-52 cursor-pointer">
             <div class="skill-icon mb-2">
                 <Icon name={skill.name} class="w-20 h-20" />
             </div>
@@ -190,3 +162,33 @@ const skils = [
         </div>
     ))}
 </section>
+
+<script>
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { applyTranslations, onLangChange } from '../i18n/client';
+gsap.registerPlugin(ScrollTrigger);
+
+applyTranslations();
+onLangChange(() => applyTranslations());
+
+const cards = gsap.utils.toArray('.skill-card');
+const scroller = document.getElementById('app-scroll');
+
+if (cards.length) {
+    gsap.set(cards, { opacity: 0, y: 30, scale: 0.85 });
+    gsap.to(cards, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.6,
+        stagger: 0.08,
+        ease: 'back.out(1.7)',
+        scrollTrigger: {
+            trigger: '#habilidades',
+            scroller: scroller ?? window,
+            start: 'top 85%',
+        },
+    });
+}
+</script>

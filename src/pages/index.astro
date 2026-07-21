@@ -11,6 +11,7 @@
 	import Experience from '../components/Experience.astro';
 	import Preload from '../components/Preload.astro';
 	import Skills from '../components/Skills.astro';
+	import GithubContributions from '../components/GithubContributions.astro';
 	const name = "Tomy Bautista";
 	// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 	// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -31,7 +32,7 @@
 		transform: translateX(0);
 	}
 	.scrollbar-color {
-		scrollbar-color: #4B5563 transparent; /* Firefox: thumb color + track color */
+		scrollbar-color: #ff8c00 transparent; /* Firefox: thumb color + track color */
 		scrollbar-width: thin;
 	}
 
@@ -44,13 +45,13 @@
 		background: transparent;
 	}
 	.scrollbar-color::-webkit-scrollbar-thumb {
-		background-color: #4B5563;
+		background-color: #ff8c00;
 		border-radius: 999px;
 		border: 2px solid transparent; /* creates spacing */
 		background-clip: padding-box;
 	}
 	.scrollbar-color::-webkit-scrollbar-thumb:hover {
-		background-color: #6B7280;
+		background-color: #fff;
 	}
 
 	.no-scrollbar::-webkit-scrollbar {
@@ -91,15 +92,14 @@
 		<section class="sm:px-12 px-4 h-screen flex flex-col  sm:flex-row-reverse justify-between items-center gap-10 w-full" id="Inicio">
 			
 			<div class=" h-[80vh] mt-20 sm:m-0 rounded-lg mask-contain sm:mask-t-from-70% sm:mask-b-from-70% mask-t-from-80% mask-b-from-90%">
-				<div class="flex flex-col overflow-auto h-full no-scrollbar gap-2">
-					<Home 	/>	
+				<div class="flex flex-col overflow-auto h-full scrollbar-color gap-2" id="app-scroll">
+					<Home 	/>
 
-					<AboutMe	/>		
+					<AboutMe	/>
 					<Skills	/>
 					<Projects/>
-					<!-- <Home 	/>				 -->
-					<!-- Home 	/>				
-					<Home 	/>				 -->
+					<Experience/>
+					<GithubContributions/>
 
 				</div>
 				<!-- <div class="sticky bottom-0 left-0 w-full h-1/4 z-997 m-0 pointer-events-none MuiBox-root css-0">				

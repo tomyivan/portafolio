@@ -1,19 +1,22 @@
 ---
-// const presentation = "Desarrollador web fullstack creando experiencias web completas, de la idea al producto."
-// const description = "Desarrollo soluciones digitales que combinan interfaces atractivas y lógica sólida, trabajando tanto en el frontend como en el backend"
-const hello = "¡Hola! Mucho gusto.";
-const phrase = "Desarrollo soluciones digitales que combinan interfaces atractivas y lógica sólida, trabajando tanto en el frontend como en el backend.";
-
+import { Icon } from 'astro-icon/components'
+import { translations } from '../i18n/translations'
+const hello = translations.es.home_hello;
+const phrase = translations.es.home_phrase;
 ---
 <style>
 .button {
     background: #000;
-    color: #e5e7eb;
+    color: #ffedd5;
     padding: 0.5rem 1rem;
-    border-radius: 12px;    
+    border-radius: 12px;
     border: none;
     cursor: pointer;
     position: relative;
+    font-family: 'Press Start 2P', system-ui;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .button::before {
@@ -26,7 +29,7 @@ const phrase = "Desarrollo soluciones digitales que combinan interfaces atractiv
     z-index: -1;
     background: linear-gradient(
         45deg,
-        red, blue, deeppink, blue, red , blue, deeppink, red, blue, deeppink, red
+        #ff7a00, #ffb703, #ff3d00, #ffb703, #ff7a00, #ffb703, #ff3d00, #ff7a00, #ffb703, #ff3d00, #ff7a00
     );
     background-size: 800%;
     border-radius: 10px;
@@ -45,52 +48,74 @@ const phrase = "Desarrollo soluciones digitales que combinan interfaces atractiv
         background-position: 0 0;
     }
 }
+
+.cv-heart {
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.cv-link:hover .cv-heart {
+    opacity: 1;
+    transform: scale(1);
+}
+
 .hello-text {
+    font-family: 'VT323', monospace;
     font-size: 6rem;
-    color: #00ffffa9;
-    text-shadow: 0 0 5px #00d1d100,0 0 10px #01cfcf00,0 0 20px #03ffffba;
+    color: #ff9d1fd9;
+    text-shadow: 0 0 5px #ff7a0080, 0 0 10px #ff5e0066, 0 0 20px #ff9d1fba;
+}
+
+.type-cursor::after {
+    content: '_';
+    animation: advance-blink 0.9s steps(1) infinite;
 }
 </style>
-<div class="w-full  flex flex-col justify-center text-3xl min-h-[80vh] gap-3 text-cyan-400" >
-    <p class="font-semibold md:text-8xl  hello-text">{hello}</p>
-    <h2 class="font-semibold md:text-4xl text-lg mt-4">{phrase}</h2>
-    <div class="text-sm p-2">
-        <a class="button" href="/CV_Tomy_Ivan_Bautista.pdf" target="_blank" rel="noopener noreferrer">Ver Curriculum</a>
+<div class="w-full  flex flex-col justify-center text-3xl min-h-[80vh] gap-3 text-orange-400" id="home-section">
+    <p class="font-semibold md:text-8xl  hello-text type-cursor" id="hello-text">{hello}</p>
+    <p class="font-semibold md:text-2xl text-lg mt-4 text-white" id="phrase-text">{phrase}</p>
+    <div class="text-sm p-2 opacity-0" id="cv-button">
+        <a class="button cv-link inline-flex items-center gap-2" href="/CV_Tomy_Ivan_Bautista.pdf" target="_blank" rel="noopener noreferrer">
+            <span data-i18n="home_cv">{translations.es.home_cv}</span>
+            <Icon name="heart" class="cv-heart w-4 h-4 text-orange-400" />
+        </a>
     </div>
-    <!-- <p class="text-center text-gray-400 font-semibold w-[80%]">{description}</p> -->
-    <!-- <div class="flex justify-center items-center gap-4">
-        <a class="button" href="#Proyectos">Ver Proyectos</a>
-    </div> -->
-    <!-- <ul class="flex justify-center items-center gap-4 mt-4 text-gray-200">
-        <li>            
-            <Icon name="php" class="md:w-7 md:h-7 " />
-        </li>
-        <li>            
-            <Icon name="laravel" class="md:w-7 md:h-7 " />
-        </li>
-        <li>            
-            <Icon name="node" class="md:w-7 md:h-7 " />
-        </li>
-        <li>            
-            <Icon name="react" class="md:w-7 md:h-7 " />
-        </li>
-        <li>            
-            <Icon name="python" class="md:w-7 md:h-7 " />
-        </li>
-        <li>            
-            <Icon name="ts" class="md:w-7 md:h-7 " />
-        </li>
-        <li>            
-            <Icon name="tailwind" class="md:w-7 md:h-7 " />
-        </li>
-        <li>            
-            <Icon name="mysql" class="md:w-7 md:h-7 " />
-        </li>
-        <li>            
-            <Icon name="sqlserver" class="md:w-7 md:h-7 " />
-        </li>
-        <li>            
-            <Icon name="postgresql" class="md:w-7 md:h-7 " />
-        </li>
-    </ul> -->
 </div>
+
+<script>
+import { gsap } from 'gsap';
+import { TextPlugin } from 'gsap/TextPlugin';
+import { getLang, onLangChange, applyTranslations } from '../i18n/client';
+import { translations } from '../i18n/translations';
+gsap.registerPlugin(TextPlugin);
+
+const helloEl = document.getElementById('hello-text');
+const phraseEl = document.getElementById('phrase-text');
+const buttonEl = document.getElementById('cv-button');
+
+if (helloEl && phraseEl && buttonEl) {
+    const dict = translations[getLang()];
+    helloEl.textContent = '';
+    phraseEl.textContent = '';
+    applyTranslations(buttonEl);
+
+    const tl = gsap.timeline({ delay: 3 });
+    tl.to(helloEl, { duration: 1.2, text: dict.home_hello, ease: 'none' })
+      .to(phraseEl, { duration: 2.2, text: dict.home_phrase, ease: 'none' }, '+=0.2')
+      .to(buttonEl, { duration: 0.5, opacity: 1, ease: 'back.out(2)' });
+
+    onLangChange((lang) => {
+        const newDict = translations[lang];
+        gsap.to([helloEl, phraseEl], {
+            opacity: 0,
+            duration: 0.2,
+            onComplete: () => {
+                helloEl.textContent = newDict.home_hello;
+                phraseEl.textContent = newDict.home_phrase;
+                gsap.to([helloEl, phraseEl], { opacity: 1, duration: 0.3 });
+            },
+        });
+    });
+}
+</script>

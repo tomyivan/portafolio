@@ -1,5 +1,9 @@
 ---
 import { Icon } from "astro-icon/components"
+import { translations } from '../i18n/translations'
+
+const t = translations.es;
+const lineKeys = ["preload_1", "preload_2", "preload_3", "preload_4"];
 ---
 <style>
     .preload {
@@ -7,14 +11,9 @@ import { Icon } from "astro-icon/components"
         height: 100vh;
         z-index: 9999;
         position: fixed;
-        background-color: #302c2c;
-        animation: opacity 1s forwards 2.9s ; 
-        overflow: hidden        
-    }
-
-    #list {
-        transition: transform 0.5s ease-in-out;
-        transform: translateY(var(--translate-y));
+        background-color: #000;
+        animation: opacity 1s forwards 2.9s;
+        overflow: hidden;
     }
 
     @keyframes opacity {
@@ -24,46 +23,43 @@ import { Icon } from "astro-icon/components"
             z-index: -1;
         }
     }
+
+    .preload-box {
+        font-family: 'VT323', monospace;
+        font-size: 1.75rem;
+    }
 </style>
 <div class="preload flex flex-col justify-center items-center">
-    <!-- <div class="p-4 inset-shadow-[0_0_20px_rgba(0,0,0,0.5)] rounded-lg"> -->
-        <ul class="text-gray-200 flex flex-col gap-2 overflow-hidden" id="list">
-            <li class="flex items-center gap-1 duration-1000">
-                <Icon name="check" class="h-5 w-5" />
-                Conversemos...
-            </li>
-            <li class="flex items-center gap-1 duration-1000">
-                <Icon name="check" class="h-5 w-5" />
-                Seamos amigos...</li>
-            <li class="flex items-center gap-1">
-                <Icon name="check" class="h-5 w-5" />
-                Hagamos magia...</li>
-            <li class="flex items-center gap-1">
-                <Icon name="check" class="h-5 w-5" />
-                Construyamos juntos...</li>
+    <div class="battle-box preload-box text-white px-10 py-8 min-w-[280px]">
+        <ul class="flex flex-col gap-2" id="list">
+            {lineKeys.map((key) => (
+                <li class="preload-line flex items-center gap-2 opacity-0">
+                    <Icon name="heart" class="h-4 w-4 text-orange-400 shrink-0" />
+                    <span data-i18n={key}>{t[key]}</span>
+                </li>
+            ))}
         </ul>
-        <!-- </div> -->
+        <span class="advance-arrow float-right mt-2" id="preload-arrow">▼</span>
+    </div>
 </div>
 
-<script >
-    window.location.hash = '#Inicio';
-    const list = document.getElementById('list');
-    function delay() {
-        return new Promise(resolve => setTimeout(resolve, 500));
-    }
-    async function animateList() {
-        if (list) {
-            for (let i = 0; i < list.children.length; i++) {
-                const element = list.children[i];
-                element?.classList.add('text-cyan-500');
-                list?.style.setProperty('--translate-y', `-${30 * (i )}px`);
-                if( i>= 2 ) {
-                    list?.children[0].classList.add('opacity-50');
-                    list?.children[1].classList.add('opacity-75');
-                }
-                await delay();
-            }
-        }
-    }
-    animateList();
+<script>
+import { gsap } from 'gsap';
+import { applyTranslations } from '../i18n/client';
+
+window.location.hash = '#Inicio';
+applyTranslations();
+
+const lines = gsap.utils.toArray('.preload-line');
+const arrow = document.getElementById('preload-arrow');
+
+gsap.set(arrow, { opacity: 0 });
+
+const tl = gsap.timeline();
+tl.to(lines, {
+    opacity: 1,
+    duration: 0.3,
+    stagger: 0.5,
+    ease: 'none',
+}).to(arrow, { opacity: 1, duration: 0.2 });
 </script>

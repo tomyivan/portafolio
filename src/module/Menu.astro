@@ -1,47 +1,58 @@
 ---
 import { Icon } from 'astro-icon/components'
+import { translations } from '../i18n/translations'
 const name = "Tomy Bautista";
-const position = "Desarrollador Full Stack";
+const links = [
+    { key: "nav_inicio", href: "#Inicio", target: "top" },
+    { key: "nav_sobremi", href: "#AboutMe", target: "AboutMe" },
+    { key: "nav_habilidades", href: "#habilidades", target: "habilidades" },
+    { key: "nav_proyectos", href: "#proyectos", target: "proyectos" },
+    { key: "nav_experiencia", href: "#experiencia", target: "experiencia" },
+    { key: "nav_github", href: "#github", target: "github" },
+]
 ---
 
 <!-- desktop -->
 
-
-<section class=" sm:flex hidden flex-col justify-between bg-dark-cyan shadow-dark-cyan w-[40%] min-h-[80vh] py-8 opacity-75  p-4 rounded-xl border-4 border-cyan-500">
-    <div class="text-cyan-200 text-2xl font-bold mb-4 text-center">
-        <p class="font-bold">{ name }</p>
-        <p class="text-lg font-semibold">{ position }</p> 
+<section class=" sm:flex hidden flex-col justify-between battle-box w-[40%] min-h-[80vh] py-8 opacity-90 p-4">
+    <div class="text-white text-center font-pixel">
+        <p class="text-sm">{ name }</p>
+        <p class="text-xs text-orange-400 mt-3" data-i18n="position">{ translations.es.position }</p>
+        <div class="lang-switch flex justify-center gap-2 mt-4 text-xs">
+            <button type="button" class="lang-btn" data-lang="es">ES</button>
+            <span class="text-white/30">/</span>
+            <button type="button" class="lang-btn" data-lang="en">EN</button>
+        </div>
     </div>
-    <div role="menu" class="p-2 rounded-2xl border-2 border-cyan-600 shadow-dark-cyan ">
-        <ul class="flex flex-col text-cyan-400 font-semibold text-center ">
-            <li class="cursor-pointer hover:bg-cyan-700 p-2 rounded-lg">INICIO</li>        
-            <li class="cursor-pointer hover:bg-cyan-700 p-2 rounded-lg">SOBRE MI</li>
-            <li class="cursor-pointer hover:bg-cyan-700 p-2 rounded-lg">HABILIDADES</li>
-            <li class="cursor-pointer hover:bg-cyan-700 p-2 rounded-lg">PROYECTOS</li>
-            <li class="cursor-pointer hover:bg-cyan-700 p-2 rounded-lg">EXPERIENCIA</li>
+    <div role="menu" class="p-2">
+        <ul class="flex flex-col gap-2 font-pixel text-xs">
+            {links.map((link) => (
+                <li class="menu-item flex items-center gap-2 cursor-pointer p-2 border-2 border-transparent" data-target={link.target}>
+                    <Icon name="heart" class="heart-icon w-3 h-3 text-orange-400 shrink-0" />
+                    <a href={link.href} class="menu-link text-white" data-i18n={link.key}>{translations.es[link.key]}</a>
+                </li>
+            ))}
         </ul>
     </div>
-    <div role="option" class="text-center font-bold text-xl text-cyan-200">
-        <div class="mb-4">
-            Contactame            
-        </div>
+    <div role="option" class="text-center font-pixel text-xs text-white">
+        <div class="mb-4" data-i18n="nav_contact_label">{ translations.es.nav_contact_label }</div>
         <ul class="flex flex-row justify-center gap-3 items-center">
-            <li class="cursor-pointer hover:text-cyan-400">
+            <li class="cursor-pointer hover:text-orange-400">
                 <a href="https://www.linkedin.com/in/tomy-bautista-466816216/" target="_blank" rel="noopener noreferrer">
                     <Icon name="linkedin" class="md:w-7 md:h-7 " />
                 </a>
             </li>
-            <li class="cursor-pointer hover:text-cyan-400">
+            <li class="cursor-pointer hover:text-orange-400">
                 <a href="https://github.com/tomyivan/" target="_blank" rel="noopener noreferrer">
                     <Icon name="github" class="md:w-7 md:h-7 " />
                 </a>
             </li>
-            <li class="cursor-pointer hover:text-cyan-400">
+            <li class="cursor-pointer hover:text-orange-400">
                 <a href="mailto:tomyivan3@gmail.com" target="_blank" rel="noopener noreferrer">
                     <Icon name="email" class="md:w-7 md:h-7 " />
                 </a>
             </li>
-            <li class="cursor-pointer hover:text-cyan-400">
+            <li class="cursor-pointer hover:text-orange-400">
                 <a href="https://wa.me/+59169952126?text=Hola%20Tomy" target="_blank" rel="noopener noreferrer">
                     <Icon name="phoneWhatsapp" class="md:w-7 md:h-7 " />
                 </a>
@@ -51,35 +62,40 @@ const position = "Desarrollador Full Stack";
 </section>
 
 <!-- mobile -->
-<header class="sm:hidden text-cyan-200  items-center bg-dark-cyan fixed top-4  shadow-dark-cyan w-[98%]  py-4 px-6 opacity-75  rounded-lg border-2 border-cyan-600 " >
-    <div class=" text-2xl font-bold  text-center flex flex-row justify-between items-center ">
-        <p class="font-bold">{ name }</p>
-        <Icon 
-            name={"down-arrow"} class="w-7 h-7 text-cyan-400 hover:text-cyan-200 cursor-pointer transition-all ease-in-out duration-300 " id="menu-icon"
+<header class="sm:hidden text-white  items-center battle-box fixed top-4  w-[98%]  py-4 px-6 opacity-90" >
+    <div class=" text-lg font-pixel  text-center flex flex-row justify-between items-center gap-3 ">
+        <p>{ name }</p>
+        <div class="lang-switch flex items-center gap-2 text-xs shrink-0">
+            <button type="button" class="lang-btn" data-lang="es">ES</button>
+            <span class="text-white/30">/</span>
+            <button type="button" class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <Icon
+            name={"down-arrow"} class="w-7 h-7 text-orange-400 hover:text-white cursor-pointer transition-all ease-in-out duration-300 " id="menu-icon"
         />
     </div>
     <div class="flex flex-row justify-between items-center h-0 overflow-hidden transition-all ease-in-out duration-300" id="contact"
     >
-        <span class="text-2xl font-bold">
-            Contactame
+        <span class="font-pixel text-xs" data-i18n="nav_contact_label">
+            { translations.es.nav_contact_label }
         </span>
         <ul class="flex flex-row justify-center gap-3 items-center overflow-hidden">
-            <li class="cursor-pointer hover:text-cyan-400 ">
+            <li class="cursor-pointer hover:text-orange-400 ">
                 <a href="https://www.linkedin.com/in/tomy-bautista-466816216/" target="_blank" rel="noopener noreferrer">
                     <Icon name="linkedin" class="w-7 h-7 " />
                 </a>
             </li>
-            <li class="cursor-pointer hover:text-cyan-400 ">
+            <li class="cursor-pointer hover:text-orange-400 ">
                 <a href="https://github.com/tomyivan/" target="_blank" rel="noopener noreferrer">
                     <Icon name="github" class="w-7 h-7 " />
                 </a>
             </li>
-            <li class="cursor-pointer hover:text-cyan-400 ">
+            <li class="cursor-pointer hover:text-orange-400 ">
                 <a href="mailto:tomyivan3@gmail.com" target="_blank" rel="noopener noreferrer">
                     <Icon name="email" class="w-7 h-7 " />
                 </a>
             </li>
-            <li class="cursor-pointer hover:text-cyan-400 ">
+            <li class="cursor-pointer hover:text-orange-400 ">
                 <a href="https://wa.me/+59169952126?text=Hola%20Tomy" target="_blank" rel="noopener noreferrer">
                     <Icon name="phoneWhatsapp" class="w-7 h-7 " />
                 </a>
@@ -88,38 +104,180 @@ const position = "Desarrollador Full Stack";
     </div>
 </header>
 
-<section class="sm:hidden fixed bottom-4  bg-dark-cyan shadow-dark-cyan w-[98%] h-16  opacity-75  rounded-lg border-2 border-cyan-600">    
-        <ul class="flex flex-row text-cyan-400 font-semibold justify-around items-center transition-all ease-in-out duration-300 ">
-            <li class="cursor-pointer hover:bg-cyan-700 py-4 px-6 rounded-lg">
-                <Icon name="home" class="w-7 h-7" />    
-            </li>        
-            <li class="cursor-pointer hover:bg-cyan-700 py-4 px-6 rounded-lg">
-                <Icon name="user" class="w-7 h-7 " />
+<section class="sm:hidden fixed bottom-4  battle-box w-[98%] h-16  opacity-90">
+        <ul class="flex flex-row text-white font-semibold justify-around items-center h-full transition-all ease-in-out duration-300 ">
+            <li class="dock-item cursor-pointer py-4 px-6 transition-colors duration-200" data-target="top">
+                <a href="#Inicio"><Icon name="home" class="w-7 h-7" /></a>
             </li>
-            <li class="cursor-pointer hover:bg-cyan-700 py-4 px-6 rounded-lg">
-                <Icon name="check" class="w-7 h-7 " />
+            <li class="dock-item cursor-pointer py-4 px-6 transition-colors duration-200" data-target="AboutMe">
+                <a href="#AboutMe"><Icon name="user" class="w-7 h-7 " /></a>
             </li>
-            <li class="cursor-pointer hover:bg-cyan-700 py-4 px-6 rounded-lg">
-                <Icon name="briefcase" class="w-7 h-7 " />
+            <li class="dock-item cursor-pointer py-4 px-6 transition-colors duration-200" data-target="habilidades">
+                <a href="#habilidades"><Icon name="check" class="w-7 h-7 " /></a>
             </li>
-            <li class="cursor-pointer hover:bg-cyan-700 py-4 px-6 rounded-lg">
-                <Icon name="chart" class="w-7 h-7 " />
+            <li class="dock-item cursor-pointer py-4 px-6 transition-colors duration-200" data-target="proyectos">
+                <a href="#proyectos"><Icon name="briefcase" class="w-7 h-7 " /></a>
             </li>
-        </ul>   
+            <li class="dock-item cursor-pointer py-4 px-6 transition-colors duration-200" data-target="experiencia">
+                <a href="#experiencia"><Icon name="chart" class="w-7 h-7 " /></a>
+            </li>
+            <li class="dock-item cursor-pointer py-4 px-6 transition-colors duration-200" data-target="github">
+                <a href="#github"><Icon name="github" class="w-7 h-7 " /></a>
+            </li>
+        </ul>
 </section>
 
-<script type="text/javascript">
-    const menuIcon = document.getElementById('menu-icon');
-    menuIcon.addEventListener('click', () => {
-        const contact = document.getElementById('contact');
-        if (contact.classList.contains('h-0')) {
-            contact.classList.remove('h-0', 'overflow-hidden');
-            contact.classList.add('h-12');
-            menuIcon.classList.add('rotate-180');
-        } else {
-            contact.classList.add('h-0', 'overflow-hidden');
-            contact.classList.remove('h-12');
-            menuIcon.classList.remove('rotate-180');
+<style>
+    .menu-link {
+        transition: color 0.2s ease;
+    }
+    .menu-item:hover .menu-link,
+    .menu-item.is-active .menu-link {
+        color: #ff8c00;
+    }
+    .menu-item.is-active {
+        border-color: #ff8c00;
+    }
+    .dock-item.is-active {
+        color: #ff8c00;
+    }
+    .lang-btn {
+        font-family: 'Press Start 2P', system-ui;
+        color: rgba(255, 255, 255, 0.4);
+        cursor: pointer;
+        transition: color 0.2s ease;
+        background: none;
+        border: none;
+        padding: 0;
+    }
+    .lang-btn:hover {
+        color: #fff;
+    }
+    .lang-btn.is-active {
+        color: #ff8c00;
+    }
+</style>
+
+<script>
+import { gsap } from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import { getLang, setLang, onLangChange, applyTranslations } from '../i18n/client';
+gsap.registerPlugin(ScrollToPlugin);
+
+document.documentElement.lang = getLang();
+applyTranslations();
+
+const langButtons = document.querySelectorAll<HTMLButtonElement>('.lang-btn');
+function refreshLangButtons() {
+    const current = getLang();
+    langButtons.forEach((btn) => {
+        btn.classList.toggle('is-active', btn.dataset.lang === current);
+    });
+}
+refreshLangButtons();
+
+langButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        const lang = btn.dataset.lang === 'en' ? 'en' : 'es';
+        setLang(lang);
+    });
+});
+
+onLangChange(() => {
+    applyTranslations();
+    refreshLangButtons();
+});
+
+const menuIcon = document.getElementById('menu-icon');
+menuIcon?.addEventListener('click', () => {
+    const contact = document.getElementById('contact');
+    if (!contact) return;
+    if (contact.classList.contains('h-0')) {
+        contact.classList.remove('h-0', 'overflow-hidden');
+        contact.classList.add('h-12');
+        menuIcon.classList.add('rotate-180');
+    } else {
+        contact.classList.add('h-0', 'overflow-hidden');
+        contact.classList.remove('h-12');
+        menuIcon.classList.remove('rotate-180');
+    }
+});
+
+const scroller = document.getElementById('app-scroll');
+const navTargets = document.querySelectorAll('[data-target]');
+
+function setActive(id: string) {
+    navTargets.forEach((item) => {
+        const el = item as HTMLElement;
+        const isActive = el.dataset.target === id;
+        el.classList.toggle('is-active', isActive);
+
+        const heart = el.querySelector('.heart-icon');
+        if (heart && !el.matches(':hover')) {
+            gsap.to(heart, {
+                opacity: isActive ? 1 : 0,
+                scale: isActive ? 1 : 0.4,
+                duration: 0.3,
+                ease: 'back.out(3)',
+            });
         }
     });
+}
+
+navTargets.forEach((item) => {
+    const el = item as HTMLElement;
+    const id = el.dataset.target;
+    if (!id || !scroller) return;
+
+    el.addEventListener('click', (event) => {
+        event.preventDefault();
+        const y = id === 'top' ? 0 : document.getElementById(id);
+        if (y === null) return;
+        gsap.to(scroller, { duration: 1, scrollTo: { y, offsetY: 0 }, ease: 'power2.inOut' });
+        setActive(id);
+    });
+});
+
+// desktop heart hover (kept independent from the scroll-based active state)
+document.querySelectorAll('.menu-item').forEach((item) => {
+    const heart = item.querySelector('.heart-icon');
+    if (!heart) return;
+    gsap.set(heart, { opacity: 0, scale: 0.4 });
+
+    item.addEventListener('mouseenter', () => {
+        gsap.to(heart, { opacity: 1, scale: 1, duration: 0.25, ease: 'back.out(3)' });
+        gsap.to(item, { x: 6, duration: 0.15, ease: 'power1.out' });
+    });
+    item.addEventListener('mouseleave', () => {
+        const isActive = item.classList.contains('is-active');
+        gsap.to(heart, { opacity: isActive ? 1 : 0, scale: isActive ? 1 : 0.4, duration: 0.2, ease: 'power1.out' });
+        gsap.to(item, { x: 0, duration: 0.15, ease: 'power1.out' });
+    });
+});
+
+if (scroller) {
+    const sections = [
+        { id: 'top', el: document.getElementById('home-section') },
+        { id: 'AboutMe', el: document.getElementById('AboutMe') },
+        { id: 'habilidades', el: document.getElementById('habilidades') },
+        { id: 'proyectos', el: document.getElementById('proyectos') },
+        { id: 'experiencia', el: document.getElementById('experiencia') },
+        { id: 'github', el: document.getElementById('github') },
+    ].filter((s): s is { id: string; el: HTMLElement } => s.el !== null);
+
+    setActive('top');
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                const match = sections.find((s) => s.el === entry.target);
+                if (match) setActive(match.id);
+            });
+        },
+        { root: scroller, rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+    );
+
+    sections.forEach((s) => observer.observe(s.el));
+}
 </script>

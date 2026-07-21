@@ -1,0 +1,104 @@
+export type Lang = 'es' | 'en';
+
+export const translations: Record<Lang, Record<string, string>> = {
+    es: {
+        nav_inicio: "INICIO",
+        nav_sobremi: "SOBRE MI",
+        nav_habilidades: "HABILIDADES",
+        nav_proyectos: "PROYECTOS",
+        nav_experiencia: "EXPERIENCIA",
+        nav_github: "GITHUB",
+        nav_contact_label: "Contactame",
+        position: "Desarrollador Full Stack",
+
+        home_hello: "¡Hola! Mucho gusto.",
+        home_phrase: "Desarrollo soluciones digitales que combinan interfaces atractivas y lógica sólida, trabajando tanto en el frontend como en el backend.",
+        home_cv: "Ver Curriculum",
+
+        about_title: "Sobre Mí",
+        about_p1: "¡Hola! Soy Tomy Ivan Bautista, un desarrollador de software apasionado por crear soluciones innovadoras y eficientes. Con experiencia en diversas tecnologías y lenguajes de programación, me especializo en el desarrollo web y aplicaciones móviles.",
+        about_p2: "Me encanta enfrentar nuevos desafíos y aprender constantemente para mejorar mis habilidades. Creo en el poder de la tecnología para transformar ideas en realidades y estoy comprometido a entregar productos de alta calidad que superen las expectativas de los usuarios.",
+        about_p3: "Cuando no estoy codificando, disfruto explorando nuevas tendencias tecnológicas, jugando videojuegos o pasando tiempo al aire libre y ejercitandome. Siempre estoy abierto a colaborar en proyectos emocionantes y a conectarme con otros profesionales del sector.",
+
+        skills_title: "Mis Habilidades",
+
+        projects_title: "Proyectos Destacados",
+        proj_fixed_title: "Sistema de Activos Fijos con generacion de QR - 2024",
+        proj_rh_title: "Sistema de archivo multimedia - 2023",
+        proj_biometric_title: "Sistema de Control Biometrico - 2022",
+        proj_fixedV1_title: "Sistema de Activos Fijos V1 con generacion de QR - 2023",
+        proj_colorPalette_title: "Generador de Paletas de Colores - 2026",
+
+        exp_title: "Experiencia",
+        exp_itso_position: "Informatica Industrial",
+        exp_itso_period: "2017",
+        exp_itso_desc: "Estudios técnicos en informática industrial, abarcando programación de PLCs, sistemas SCADA, redes industriales y automatización de procesos.",
+        exp_pasante_position: "Pasante de Desarrollo Web Jr.",
+        exp_pasante_period: "2019 - 2020",
+        exp_pasante_desc: "Desarrollo y mantenimiento de la página web de la firma, implementando mejoras en la interfaz de usuario y optimizando el rendimiento del sitio.",
+        exp_umsa_position: "Informática",
+        exp_umsa_period: "2020 - Actualidad",
+        exp_umsa_desc: "Estudios universitarios en informática, con énfasis en desarrollo de software, bases de datos y redes de computadoras.",
+        exp_fs_position: "Desarrollador Full Stack",
+        exp_fs_period: "2022 - 2025",
+        exp_fs_desc: "Desarrollo y mantenimiento de aplicaciones web internas, externas y soluciones freelance para clientes diversos, trabajando tanto en el frontend como en el backend, desde sistemas corporativos hasta aplicaciones web complejas con tecnologías modernas y mejores prácticas de desarrollo.",
+
+        github_title: "Mapa de Contribuciones",
+        github_link: "Ver perfil completo en GitHub →",
+
+        preload_1: "Conversemos...",
+        preload_2: "Seamos amigos...",
+        preload_3: "Hagamos magia...",
+        preload_4: "Construyamos juntos...",
+    },
+    en: {
+        nav_inicio: "HOME",
+        nav_sobremi: "ABOUT ME",
+        nav_habilidades: "SKILLS",
+        nav_proyectos: "PROJECTS",
+        nav_experiencia: "EXPERIENCE",
+        nav_github: "GITHUB",
+        nav_contact_label: "Contact me",
+        position: "Full Stack Developer",
+
+        home_hello: "Hi! Nice to meet you.",
+        home_phrase: "I build digital solutions that combine attractive interfaces with solid logic, working on both frontend and backend.",
+        home_cv: "Resume",
+
+        about_title: "About Me",
+        about_p1: "Hi! I'm Tomy Ivan Bautista, a software developer passionate about building innovative and efficient solutions. With experience across multiple technologies and programming languages, I specialize in web and mobile app development.",
+        about_p2: "I love tackling new challenges and constantly learning to improve my skills. I believe in technology's power to turn ideas into reality, and I'm committed to delivering high-quality products that exceed users' expectations.",
+        about_p3: "When I'm not coding, I enjoy exploring new tech trends, playing video games, or spending time outdoors and working out. I'm always open to collaborating on exciting projects and connecting with other professionals in the field.",
+
+        skills_title: "My Skills",
+
+        projects_title: "Featured Projects",
+        proj_fixed_title: "Fixed Asset Management System with QR Generation - 2024",
+        proj_rh_title: "Media Archive System - 2023",
+        proj_biometric_title: "Biometric Access Control System - 2022",
+        proj_fixedV1_title: "Fixed Asset Management System V1 with QR Generation - 2023",
+        proj_colorPalette_title: "Color Palette Generator - 2026",
+
+        exp_title: "Experience",
+        exp_itso_position: "Industrial Computing",
+        exp_itso_period: "2017",
+        exp_itso_desc: "Technical studies in industrial computing, covering PLC programming, SCADA systems, industrial networks, and process automation.",
+        exp_pasante_position: "Jr. Web Development Intern",
+        exp_pasante_period: "2019 - 2020",
+        exp_pasante_desc: "Developed and maintained the firm's website, improving the user interface and optimizing site performance.",
+        exp_umsa_position: "Computer Science",
+        exp_umsa_period: "2020 - Present",
+        exp_umsa_desc: "University studies in computer science, with an emphasis on software development, databases, and computer networks.",
+        exp_fs_position: "Full Stack Developer",
+        exp_fs_period: "2022 - 2025",
+        exp_fs_desc: "Developed and maintained internal and external web applications plus freelance solutions for a variety of clients, working across frontend and backend, from corporate systems to complex web applications, using modern technologies and best practices.",
+
+        github_title: "Contribution Graph",
+        github_link: "View full profile on GitHub →",
+
+        preload_1: "Let's talk...",
+        preload_2: "Let's be friends...",
+        preload_3: "Let's make magic...",
+        preload_4: "Let's build together...",
+    },
+};
