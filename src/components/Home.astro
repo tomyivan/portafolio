@@ -62,7 +62,7 @@ const phrase = translations.es.home_phrase;
 
 .hello-text {
     font-family: 'VT323', monospace;
-    font-size: 6rem;
+    font-size: clamp(2.5rem, 12vw, 6rem);
     color: #ff9d1fd9;
     text-shadow: 0 0 5px #ff7a0080, 0 0 10px #ff5e0066, 0 0 20px #ff9d1fba;
 }
@@ -73,10 +73,10 @@ const phrase = translations.es.home_phrase;
 }
 </style>
 <div class="w-full  flex flex-col justify-center text-3xl min-h-[80vh] gap-3 text-orange-400" id="home-section">
-    <p class="font-semibold md:text-8xl  hello-text type-cursor" id="hello-text">{hello}</p>
+    <p class="font-semibold hello-text type-cursor" id="hello-text">{hello}</p>
     <p class="font-semibold md:text-2xl text-lg mt-4 text-white" id="phrase-text">{phrase}</p>
     <div class="text-sm p-2 opacity-0" id="cv-button">
-        <a class="button cv-link inline-flex items-center gap-2" href="/CV_Tomy_Ivan_Bautista.pdf" target="_blank" rel="noopener noreferrer">
+        <a id="cv-link" class="button cv-link inline-flex items-center gap-2" href={translations.es.cv_link} target="_blank" rel="noopener noreferrer">
             <span data-i18n="home_cv">{translations.es.home_cv}</span>
             <Icon name="heart" class="cv-heart w-4 h-4 text-orange-400" />
         </a>
@@ -93,8 +93,8 @@ gsap.registerPlugin(TextPlugin);
 const helloEl = document.getElementById('hello-text');
 const phraseEl = document.getElementById('phrase-text');
 const buttonEl = document.getElementById('cv-button');
-
-if (helloEl && phraseEl && buttonEl) {
+const cvLinkEl = document.getElementById('cv-link') as HTMLAnchorElement;
+if (helloEl && phraseEl && buttonEl && cvLinkEl) {
     const dict = translations[getLang()];
     helloEl.textContent = '';
     phraseEl.textContent = '';
@@ -102,11 +102,13 @@ if (helloEl && phraseEl && buttonEl) {
 
     const tl = gsap.timeline({ delay: 3 });
     tl.to(helloEl, { duration: 1.2, text: dict.home_hello, ease: 'none' })
-      .to(phraseEl, { duration: 2.2, text: dict.home_phrase, ease: 'none' }, '+=0.2')
-      .to(buttonEl, { duration: 0.5, opacity: 1, ease: 'back.out(2)' });
-
+    .to(phraseEl, { duration: 2.2, text: dict.home_phrase, ease: 'none' }, '+=0.2')
+    .to(buttonEl, { duration: 0.5, opacity: 1, ease: 'back.out(2)' });
+    cvLinkEl.href = dict.cv_link;
     onLangChange((lang) => {
-        const newDict = translations[lang];
+          console.log('Timeline created:', tl);
+          const newDict = translations[lang];
+        cvLinkEl.href = newDict.cv_link;
         gsap.to([helloEl, phraseEl], {
             opacity: 0,
             duration: 0.2,
