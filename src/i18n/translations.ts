@@ -14,7 +14,8 @@ export const translations: Record<Lang, Record<string, string>> = {
         home_hello: "¡Hola! Mucho gusto.",
         home_phrase: "Desarrollo soluciones digitales que combinan interfaces atractivas y lógica sólida, trabajando tanto en el frontend como en el backend.",
         home_cv: "Ver Curriculum",
-
+        cv_link: "/CV_TomyIvanBH_esp.pdf",
+        
         about_title: "Sobre Mí",
         about_p1: "¡Hola! Soy Tomy Ivan Bautista, un desarrollador de software apasionado por crear soluciones innovadoras y eficientes. Con experiencia en diversas tecnologías y lenguajes de programación, me especializo en el desarrollo web y aplicaciones móviles.",
         about_p2: "Me encanta enfrentar nuevos desafíos y aprender constantemente para mejorar mis habilidades. Creo en el poder de la tecnología para transformar ideas en realidades y estoy comprometido a entregar productos de alta calidad que superen las expectativas de los usuarios.",
@@ -64,6 +65,7 @@ export const translations: Record<Lang, Record<string, string>> = {
         home_hello: "Hi! Nice to meet you.",
         home_phrase: "I build digital solutions that combine attractive interfaces with solid logic, working on both frontend and backend.",
         home_cv: "Resume",
+        cv_link: "/CV_TomyIvanBH_eng.pdf",
 
         about_title: "About Me",
         about_p1: "Hi! I'm Tomy Ivan Bautista, a software developer passionate about building innovative and efficient solutions. With experience across multiple technologies and programming languages, I specialize in web and mobile app development.",
